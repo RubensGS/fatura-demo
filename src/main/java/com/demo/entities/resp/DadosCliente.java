@@ -14,13 +14,22 @@ public class DadosCliente {
 
     private List<Transacao> transacoes = new ArrayList<>();
 
-    public DadosCliente() { }
+    public DadosCliente() {
+    }
 
     public DadosCliente(String nomeCliente, Double saldoAnterior, Double totalFatura, Double saldoDisponivel, List<Transacao> transacoes) {
         this.nomeCliente = nomeCliente;
         this.saldoAnterior = saldoAnterior;
         this.totalFatura = totalFatura;
         this.saldoDisponivel = saldoDisponivel;
+        this.transacoes = transacoes;
+    }
+
+    public DadosCliente(String nomeCliente, List<Transacao> transacoes) {
+        this.nomeCliente = nomeCliente;
+        this.saldoAnterior = getSaldoAnterior();
+        this.totalFatura = getTotalFatura();
+        this.saldoDisponivel = getSaldoDisponivel();
         this.transacoes = transacoes;
     }
 
@@ -33,41 +42,38 @@ public class DadosCliente {
     }
 
     public Double getSaldoAnterior() {
-        return saldoAnterior;
-    }
-
-    public void setSaldoAnterior(Double saldoAnterior) {
         double sum = 0;
         for (Transacao item : transacoes) {
-            if(item.getEstabelecimento().equals("Pagamento")) {
+            if (item.getEstabelecimento().equals("Pagamento")) {
                 sum += Math.abs(item.getValor());
             }
         }
-        this.saldoAnterior = sum;
+        return saldoAnterior = sum;
     }
+
+    public void setSaldoAnterior(Double saldoAnterior) { this.saldoAnterior = saldoAnterior; }
 
     public Double getTotalFatura() {
-        return totalFatura;
-    }
-
-    public void setTotalFatura(Double totalFatura) {
         double sum = 0;
         for (Transacao item : transacoes) {
-            if(!item.getEstabelecimento().equals("Pagamento")) {
+            if (!item.getEstabelecimento().equals("Pagamento")) {
                 sum += item.getValor();
             }
         }
-        this.totalFatura = sum;
 
+        return totalFatura = sum;
     }
 
+    public void setTotalFatura(Double totalFatura) { this.totalFatura = totalFatura; }
+
     public Double getSaldoDisponivel() {
-        return saldoDisponivel;
+
+        return getSaldoAnterior() - getTotalFatura();
     }
 
     public void setSaldoDisponivel(Double saldoDisponivel) {
 
-        this.saldoDisponivel = getSaldoAnterior() - getTotalFatura();
+        this.saldoDisponivel = saldoDisponivel;
     }
 
     public List<Transacao> getTransacoes() {

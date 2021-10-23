@@ -18,7 +18,7 @@ public class JavaApplication {
 
 		Fatura fatura;
 		DadosCliente dadosCliente;
-		Transacoes transacoes = new Transacoes();
+		Transacoes transacoes;
 		TransacaoService transacaoService = new TransacaoService();
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -26,15 +26,16 @@ public class JavaApplication {
 
 		try {
 			RequestDAO req = mapper.readValue(new File("src/main/resources/request.json"), RequestDAO.class);
-			//dadosCliente = new DadosCliente(req.getConta().getNomeCliente(), req.getTransacoes());
+
+			dadosCliente = new DadosCliente(req.getConta().getNomeCliente(), req.getTransacoes());
 
 			transacoes = new Transacoes(
 					transacaoService.getListaInternacional(req.getTransacoes()),
 					transacaoService.getListaNacional(req.getTransacoes()));
 
-			//fatura = new Fatura(dadosCliente, transacoes, null);
+			fatura = new Fatura(dadosCliente, transacoes, null);
 
-			mapper.writeValue(new File("src/main/resources/response.json"), req.getTransacoes());
+			mapper.writeValue(new File("src/main/resources/response.json"), fatura);
 			String json = mapper.writeValueAsString(new ResponseDAO());
 
 			System.out.println(json);
