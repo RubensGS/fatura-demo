@@ -8,12 +8,6 @@ import java.util.List;
 
 public class TransacaoService {
 
-    private List<Transacao> transacao;
-
-    public TransacaoService(List<Transacao> transacao) {
-        this.transacao = transacao;
-    }
-
     public List<Transacao> getListaInternacional(List<Transacao> list) {
         List<Transacao> aux = new ArrayList<>();
 
