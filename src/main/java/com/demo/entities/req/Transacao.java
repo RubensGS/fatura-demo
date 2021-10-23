@@ -1,6 +1,8 @@
 package com.demo.entities.req;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Transacao {
 
@@ -9,7 +11,10 @@ public class Transacao {
     private String tipo;
     private LocalDateTime data;
 
-    public Transacao() {}
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+    public Transacao() {
+    }
 
     public Transacao(Double valor, String estabelecimento, String tipo, LocalDateTime data) {
         this.valor = valor;
@@ -48,5 +53,28 @@ public class Transacao {
 
     public void setData(LocalDateTime data) {
         this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transacao transacao = (Transacao) o;
+        return tipo.equals(transacao.tipo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tipo);
+    }
+
+    @Override
+    public String toString() {
+        return "Transacao{" +
+                "valor=" + valor +
+                ", estabelecimento='" + estabelecimento + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", data=" + data.format(formatter) +
+                '}';
     }
 }

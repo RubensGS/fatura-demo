@@ -17,9 +17,7 @@ public class Transacoes {
         this.nacionais = nacionais;
     }
 
-    public List<Transacao> getInternacionais() {
-        return internacionais;
-    }
+    public List<Transacao> getInternacionais() { return internacionais; }
 
     public void setInternacionais(List<Transacao> internacionais) {
         this.internacionais = internacionais;

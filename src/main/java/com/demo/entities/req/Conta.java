@@ -28,4 +28,11 @@ public class Conta {
 		this.limite = limite;
 	}
 
+	@Override
+	public String toString() {
+		return "Conta{" +
+				"nomeCliente='" + nomeCliente + '\'' +
+				", limite=" + limite +
+				'}';
+	}
 }

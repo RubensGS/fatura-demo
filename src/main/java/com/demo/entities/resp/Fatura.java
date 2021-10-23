@@ -36,4 +36,5 @@ public class Fatura {
     public void setTotais(Total totais) {
         this.totais = totais;
     }
+
 }
