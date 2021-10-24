@@ -1,5 +1,6 @@
 import com.demo.entities.resp.DadosCliente;
 import com.demo.entities.resp.Fatura;
+import com.demo.entities.resp.Total;
 import com.demo.entities.resp.Transacoes;
 import com.demo.payloads.RequestDAO;
 import com.demo.payloads.ResponseDAO;
@@ -20,6 +21,7 @@ public class JavaApplication {
 		DadosCliente dadosCliente;
 		Transacoes transacoes;
 		TransacaoService transacaoService = new TransacaoService();
+		Total total;
 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.registerModule(new JavaTimeModule());
@@ -33,10 +35,11 @@ public class JavaApplication {
 					transacaoService.getListaInternacional(req.getTransacoes()),
 					transacaoService.getListaNacional(req.getTransacoes()));
 
-			fatura = new Fatura(dadosCliente, transacoes, null);
+			total = new Total(dadosCliente.getTotalFatura(), dadosCliente.getSaldoAnterior());
 
-			mapper.writeValue(new File("src/main/resources/response.json"), fatura);
-			String json = mapper.writeValueAsString(new ResponseDAO());
+			fatura = new Fatura(dadosCliente, transacoes, total);
+			mapper.writeValue(new File("src/main/resources/response.json"), new ResponseDAO(fatura));
+			String json = mapper.writeValueAsString(new ResponseDAO(fatura));
 
 			System.out.println(json);
 
