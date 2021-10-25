@@ -6,12 +6,14 @@ import com.demo.payloads.RequestDAO;
 import com.demo.payloads.ResponseDAO;
 import com.demo.services.TransacaoService;
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.io.File;
 import java.io.IOException;
+
 
 public class JavaApplication {
 
@@ -24,7 +26,6 @@ public class JavaApplication {
 		Total total;
 
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.registerModule(new JavaTimeModule());
 
 		try {
 			RequestDAO req = mapper.readValue(new File("src/main/resources/request.json"), RequestDAO.class);
@@ -36,12 +37,10 @@ public class JavaApplication {
 					transacaoService.getListaNacional(req.getTransacoes()));
 
 			total = new Total(dadosCliente.getTotalFatura(), dadosCliente.getSaldoAnterior());
-
 			fatura = new Fatura(dadosCliente, transacoes, total);
-			mapper.writeValue(new File("src/main/resources/response.json"), new ResponseDAO(fatura));
-			String json = mapper.writeValueAsString(new ResponseDAO(fatura));
 
-			System.out.println(json);
+			ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+			writer.writeValue(new File("src/main/resources/response.json"), new ResponseDAO(fatura));
 
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
