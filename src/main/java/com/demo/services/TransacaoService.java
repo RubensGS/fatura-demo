@@ -1,6 +1,7 @@
 package com.demo.services;
 
 import com.demo.entities.req.Transacao;
+import com.demo.entities.resp.Transacoes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +12,7 @@ public class TransacaoService {
         List<Transacao> aux = new ArrayList<>();
 
         for (Transacao transacao : list ) {
-
             if(transacao.getTipo().equals("Internacional")) {
-                transacao.setTipo("");
                 aux.add(transacao);
             }
         }
@@ -25,7 +24,6 @@ public class TransacaoService {
 
         for (Transacao transacao : list ) {
             if(transacao.getTipo().equals("Nacional")) {
-                transacao.setTipo("");
                 aux.add(transacao);
             }
         }
