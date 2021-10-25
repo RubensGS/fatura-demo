@@ -1,5 +1,9 @@
 package com.demo.entities.req;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -9,14 +13,13 @@ public class Transacao {
     private Double valor;
     private String estabelecimento;
     private String tipo;
-    private LocalDateTime data;
 
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private String data;
 
     public Transacao() {
     }
 
-    public Transacao(Double valor, String estabelecimento, String tipo, LocalDateTime data) {
+    public Transacao(Double valor, String estabelecimento, String tipo, String data) {
         this.valor = valor;
         this.estabelecimento = estabelecimento;
         this.tipo = tipo;
@@ -39,6 +42,7 @@ public class Transacao {
         this.estabelecimento = estabelecimento;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     public String getTipo() {
         return tipo;
     }
@@ -47,11 +51,11 @@ public class Transacao {
         this.tipo = tipo;
     }
 
-    public LocalDateTime getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(LocalDateTime data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -74,7 +78,7 @@ public class Transacao {
                 "valor=" + valor +
                 ", estabelecimento='" + estabelecimento + '\'' +
                 ", tipo='" + tipo + '\'' +
-                ", data=" + data.format(formatter) +
+                ", data=" + data +
                 '}';
     }
 }
