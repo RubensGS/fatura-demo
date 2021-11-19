@@ -1,22 +1,12 @@
 package com.demo.payloads;
 
 import com.demo.entities.resp.Fatura;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class ResponseDAO {
-
     private Fatura fatura;
-
-    public ResponseDAO() { }
-
-    public ResponseDAO(Fatura fatura) {
-        this.fatura = fatura;
-    }
-
-    public Fatura getFatura() {
-        return fatura;
-    }
-
-    public void setFatura(Fatura fatura) {
-        this.fatura = fatura;
-    }
 }
