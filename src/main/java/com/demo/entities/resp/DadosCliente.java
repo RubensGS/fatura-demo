@@ -1,6 +1,7 @@
 package com.demo.entities.resp;
 
 import com.demo.entities.req.Transacao;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,8 @@ public class DadosCliente {
     private Double saldoAnterior;
     private Double totalFatura;
     private Double saldoDisponivel;
+
+    @JsonIgnore
     private List<Transacao> transacoes = new ArrayList<>();
 
     public DadosCliente(String nomeCliente, List<Transacao> transacoes) {
