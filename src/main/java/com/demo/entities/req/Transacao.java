@@ -1,11 +1,6 @@
 package com.demo.entities.req;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Transacao {
@@ -13,7 +8,6 @@ public class Transacao {
     private Double valor;
     private String estabelecimento;
     private String tipo;
-
     private String data;
 
     public Transacao() {
