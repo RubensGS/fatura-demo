@@ -4,28 +4,7 @@
       "nomeCliente" : "Antonio Coutinho",
       "saldoAnterior" : 2000.0,
       "totalFatura" : 300.0,
-      "saldoDisponivel" : 1700.0,
-      "transacoes" : [ {
-        "valor" : 100.0,
-        "estabelecimento" : "Outback",
-        "data" : "2021-01-16T19:00:00.000Z"
-      }, {
-        "valor" : 150.0,
-        "estabelecimento" : "Starbucks",
-        "data" : "2021-01-16T20:00:00.000Z"
-      }, {
-        "valor" : 20.0,
-        "estabelecimento" : "Lojão do Bras",
-        "data" : "2021-01-10T10:00:00.000Z"
-      }, {
-        "valor" : 30.0,
-        "estabelecimento" : "Eletrovale",
-        "data" : "2021-01-12T09:00:00.000Z"
-      }, {
-        "valor" : -2000.0,
-        "estabelecimento" : "Pagamento",
-        "data" : "2021-01-12T09:00:00.000Z"
-      } ]
+      "saldoDisponivel" : 1700.0
     },
     "transacoes" : {
       "internacionais" : [ {
