@@ -8,22 +8,27 @@
       "transacoes" : [ {
         "valor" : 100.0,
         "estabelecimento" : "Outback",
+        "tipo" : "Internacional",
         "data" : "2021-01-16T19:00:00.000Z"
       }, {
         "valor" : 150.0,
         "estabelecimento" : "Starbucks",
+        "tipo" : "Internacional",
         "data" : "2021-01-16T20:00:00.000Z"
       }, {
         "valor" : 20.0,
         "estabelecimento" : "Lojão do Bras",
+        "tipo" : "Nacional",
         "data" : "2021-01-10T10:00:00.000Z"
       }, {
         "valor" : 30.0,
         "estabelecimento" : "Eletrovale",
+        "tipo" : "Nacional",
         "data" : "2021-01-12T09:00:00.000Z"
       }, {
         "valor" : -2000.0,
         "estabelecimento" : "Pagamento",
+        "tipo" : "Nacional",
         "data" : "2021-01-12T09:00:00.000Z"
       } ]
     },
@@ -31,23 +36,28 @@
       "internacionais" : [ {
         "valor" : 100.0,
         "estabelecimento" : "Outback",
+        "tipo" : "Internacional",
         "data" : "2021-01-16T19:00:00.000Z"
       }, {
         "valor" : 150.0,
         "estabelecimento" : "Starbucks",
+        "tipo" : "Internacional",
         "data" : "2021-01-16T20:00:00.000Z"
       } ],
       "nacionais" : [ {
         "valor" : 20.0,
         "estabelecimento" : "Lojão do Bras",
+        "tipo" : "Nacional",
         "data" : "2021-01-10T10:00:00.000Z"
       }, {
         "valor" : 30.0,
         "estabelecimento" : "Eletrovale",
+        "tipo" : "Nacional",
         "data" : "2021-01-12T09:00:00.000Z"
       }, {
         "valor" : -2000.0,
         "estabelecimento" : "Pagamento",
+        "tipo" : "Nacional",
         "data" : "2021-01-12T09:00:00.000Z"
       } ]
     },
